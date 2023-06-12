@@ -98,8 +98,8 @@ npm install --save swagger-ui-express swagger-autogen body-parser
 Please verify if the dependencies were installed in the [package.json](package.json) file.
 
 Now we need to create a new file and a new folder. The new file and folder are:
-- swagger.js (at root folder)
-- folder swagger (at root folder)
+- **FILE:** swagger.js (at root folder)
+- **FOLDER:** folder swagger (at root folder)
 > *Both will be created at root folder*
 
 ## **swagger.js**
