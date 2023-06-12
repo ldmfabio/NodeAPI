@@ -1,12 +1,16 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+const swaggerUi = require("swagger-ui-express");
+const swaggerFile = require('./swagger/swagger_output.json');
 
 const server = express();
-
 const router = express.Router();
 
 const fs = require("fs");
 
+server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 server.use(express.json({ extended: true }));
+server.use(bodyParser.urlencoded({ extended: false }));
 
 const readFile = () => {
   const content = fs.readFileSync("./data/items.json", "utf-8");
