@@ -100,6 +100,7 @@ Now, if you run the server with the command:
 ```
 
 The result of this command is:
+<br>
 ![Server Running](imgSteps/npm-run-dev-2.png)
 
 ## Router
