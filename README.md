@@ -66,6 +66,7 @@ You can run the server with the command:
 ```
 
 The result of this command is:
+
 ![Server Running](imgSteps/npm-run-dev-1.png)
 
 ## Creating the server
@@ -185,14 +186,15 @@ router.get("/", (req, res) => {
     res.send(JSON.parse(content, ));
 });
 ```
+
 See the image below to see how to use the GET method at the RapidAPI and the result of this method.
 
 ![GET Method](imgSteps/getMethod.png)
 
 _Click at the **Send** button to see the result of the GET method._
 
-
 We will read the same JSON file in all of our methods. So, to get easier, we will create a function to read the JSON file. The code of this function, that will be placed at [index.js](index.js) file after the server.use(express.json({ extended: true })); line, is:
+
 ```JavaScript
 const readFile = () => {
     const content = fs.readFileSync("./data/items.json", "utf-8");
@@ -208,19 +210,24 @@ router.get("/", (req, res) => {
     res.send(content);
 });
 ```
+
 ## Post Method
+
 Again, to use the Post Method, you need to change the [index.js](index.js) file.
 
 We can create a function to write the new content in the [items.json](./data/items.json) file.
 
 The code of this function may be places after the readFile() function. It's code follows below:
-```JSON
+
+```JavaScript
 const writeFile = (content) => {
   const updateFile = JSON.stringify(content);
   fs.writeFileSync("./data/items.json", updateFile, "utf-8");
 }
 ```
+
 The Post Method lines that will be necessary to send the new content for [items.json](./data/items.json) file is:
+
 ```JavaScript
 router.post("/", (req, res) => {
   const { name, email, phone } = req.body;
@@ -241,9 +248,11 @@ _Click at the **Send** button to see the result of the POST method._
 As you can see in the right side of the image, the [items.json](./data/items.json) file was updated with the new data. Now, we have two records in this file.
 
 ## Put Method
+
 The Put Method will be useful to update data contained in the [items.json](./data/items.json) file.
 
 We need to change the router.put because we need to specify the ID related to the data that will be updated. So, the entire code of router.put will be:
+
 ```JavaScript
 router.put("/:id", (req, res) => {
   const { id } = req.params;
@@ -279,9 +288,11 @@ _Click at the **Send** button to see the result of the PUT method._
 As you can see in the right side of the image, the JSON file was updated with the new data displayed on the left side of the image. Beyond that, the PUT method is used to update the data of a specific record. In this case, the record with the ID 2 was updated. This parameter was set in the URL of the PUT method.
 
 ## Delete Method
+
 To delete some items of [items.json](./data/items.json) file, like previous method (PUT), we also need to specify the ID related to register that will be deleted.
 
 Because of this, we will also need to change the router.delete. The complete code of this method is:
+
 ```JavaScript
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
