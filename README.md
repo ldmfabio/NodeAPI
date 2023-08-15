@@ -233,7 +233,7 @@ The Post Method lines that will be necessary to send the new content for [items.
 router.post("/", (req, res) => {
   const { name, email, phone } = req.body;
   const currentContent = readFile();
-  const id = currentContent.lenngth + 1;
+  const id = currentContent.length + 1;
   currentContent.push({ id, name, email, phone });
   writeFile(currentContent);
   res.send(currentContent);
